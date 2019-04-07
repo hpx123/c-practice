@@ -16,7 +16,7 @@ int add(int a,int b){
 
 int main(){
 	int n, m, i, j, t, sum ;
-	int a[10005];
+	int a[100000];
 	scanf("%d",&n);
 	while(n--){
 		scanf("%d",&m);
