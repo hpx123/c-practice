@@ -32,11 +32,11 @@ int main(){
 		i++;
 	}
 	if(is_prime(b[25] - b[i])){
-		printf("Lucky Word");
+		printf("Lucky Word\n");
 		printf("%d",b[25] - b[i]);
 	}
 	else{
-		printf("No Answer");
+		printf("No Answer\n");
 		printf("0");
 	}
 	return 0;

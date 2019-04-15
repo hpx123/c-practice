@@ -1,5 +1,5 @@
 #include<stdio.h>
-#define MAX 100000
+#define MAX 1000000
 
 int main(){
 	int n, i;
