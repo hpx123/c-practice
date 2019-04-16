@@ -1,17 +1,24 @@
 #include<stdio.h>
-#define MAX 5
+#define MAX 0x777
+
+int min(int a, int b){
+	return a > b ? a : b;
+}
 
 int main(){
-	int i;
-	float x;
-	float sum = 0;
-	scanf("%f",&x);
-	for(i = 2; i < MAX; i++){
-		sum = 1.0/i ;
-		if(x < sum){
-			break;
+	int road[58][58];
+	int i, j, k, t, m, w, x, y;
+	char a, b;
+	/*for(i = 0; i < 58; i++){
+		for(j = 0; j < 58; j++){
+			road[i][j] = MAX;
 		}
-	} 
-	printf("%d",i);
+	}*/
+	scanf("%d",&m);
+	for(i = 0; i < m; i++){
+		scanf("%c %c %d",&a, &b, &w);
+
+		printf("%d %d",a - 'A',b - 'A');
+	}
 	return 0;
 }

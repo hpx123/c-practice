@@ -1,25 +1,15 @@
 #include<stdio.h>
-#include<math.h>
 
 int main(){
-	long long int n, len = 0, k;
-	int i;
-	scanf("%ld",&n);
-	k = n;
-	if(n == 0){
-		printf("0");
-		return 0;
-	}
-	while(n != 0){
-		n = n / 10;
-		len++;
-	}
-	len = pow(10,len - 1);
-	while(len != 0){
-		i = k / len;
-		k = k % len;
-		len = len / 10;
-		printf("%d ", i);
+	char a, b;
+	int i, x, y;
+	for(i = 0; i < 3; i++){
+		scanf("%c",&a);
+		x = a - 'A';
+		scanf("%c",&b);
+		y = b - 'A';
+		printf("%d %d",x, y);
+		
 	}
 	return 0;
 }
