@@ -1,24 +1,19 @@
 #include<stdio.h>
-#define MAX 0x777
-
-int min(int a, int b){
-	return a > b ? a : b;
-}
+#include<stdlib.h>
 
 int main(){
-	int road[58][58];
-	int i, j, k, t, m, w, x, y;
-	char a, b;
-	/*for(i = 0; i < 58; i++){
-		for(j = 0; j < 58; j++){
-			road[i][j] = MAX;
-		}
-	}*/
+	int i, t = 0;
+	char s[5];
+	int a[1005];
+	int m;
 	scanf("%d",&m);
-	for(i = 0; i < m; i++){
-		scanf("%c %c %d",&a, &b, &w);
-
-		printf("%d %d",a - 'A',b - 'A');
+	while(m--){
+		fflush(stdin);
+		gets(s);
+		a[t++] = atoi(&s[1]);
+	}
+	for( i = 0; i < t; i++){
+		printf("%d\n",a[i]);
 	}
 	return 0;
-}
+} 
