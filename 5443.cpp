@@ -1,8 +1,18 @@
-#include<stdio.h> 
+#include<stdio.h>
+#include<string.h>
 
 int main(){
-    double n;
-    scanf("%lf",&n);
-    printf("%lf",-n);
+    char s[1005];
+    int i;
+	scanf("%s",s);
+	if(s[0] == '-'){
+		for(i = 1; i < strlen(s); i++){
+			printf("%c",s[i]);
+		}
+	}
+	else{
+		printf("-");
+		puts(s);
+	}
     return 0;
 }

@@ -9,13 +9,13 @@ int main(){
 	int w, n, a[30005], i;
 	scanf("%d",&w);
 	scanf("%d",&n);
-	int head = 0, tail = n;
+	int head = 0, tail = n - 1;
 	int count = 0;
 	for(i = 0; i < n; i++){
 		scanf("%d",&a[i]);
 	}
 	qsort(a, n, sizeof(a[0]), cmp);
-	while(head != tail){
+	while(head < tail){
 		if(a[head] + a[tail] <= w){
 			count++;
 			++head;
@@ -24,6 +24,9 @@ int main(){
 		}
 		count++;
 		--tail;
+	}
+	if(head == tail){
+		count++;
 	}
 	printf("%d",count);
 	return 0;
