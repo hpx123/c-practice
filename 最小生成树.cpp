@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include<stdio  .h>
 #define MAX 12345
 
 int road[105][105] = {0};
