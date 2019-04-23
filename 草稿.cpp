@@ -1,123 +1,64 @@
-
 #include <stdio.h>
 
-#include <string.h>
+#define M 302
 
-int main()
+ 
 
-{
+int main() {
 
-    char a[1100], b[1000001];
+	int n=0,x=0,y=0;    //n为商品的数目，x为负重，y为钱数
 
-    while(gets(a)!=NULL)
+	int goods[M][4]={0};  //goods数组用来接收商品的信息
 
-    {
+	int dp[101][101]={0};  //行为负重，列为剩余的钱数
 
-        gets(b);
+	int i=0,j=0,k=0;
 
-        strcat(a," ");
+	int ww=0,vv=0,tt=0,hh=0;  //用于接收每个商品的重量，价格，价值和数目
 
-        strcat(b," ");//在ab后各加一个" "，减小配对的难度
+	scanf("%d %d %d",&n,&x,&y);
 
-        int i, s, n=0, l, j, ss=0, k, rec;
+	for(i=0;i<n;i++)
 
-        for (i = 0; a[i] != '\0'; i++)
+	{
 
-        {
+		scanf("%d %d %d %d",*(goods+i),*(goods+i)+1,*(goods+i)+2,*(goods+i)+3);
 
-            if (a[i] >= 'a')
+	}
 
-                a[i] -= 'a' - 'A';
+	
 
-        }
+	for(i=0;i<n;i++)
 
-        for (i = 0; b[i] != '\0'; i++)
+	{
 
-        {
+		for(j=x;j>=0;j--)  //负重
 
-            if (b[i] >= 'a')
+		{
 
-                b[i] -= 'a' - 'A';
+			for(k=y;k>=0;k--)  //剩余的钱数
 
-        } //统一ab的大小写
+			{
 
-        for (i = 0; b[i] != '\0'; i++)
+				ww = goods[i][0],vv = goods[i][1],tt = goods[i][2],hh = goods[i][3];
 
-        {
+				if(hh&&j>=ww&&k>=vv&&dp[j][k]<dp[j-ww][k-vv]+tt)  //买一个
 
-            if (b[i] == ' ')
+					dp[j][k] = dp[j-ww][k-vv]+tt;
 
-            {
+				if(hh&&j>=ww*hh&&k>=vv*hh&&dp[j][k]<dp[j-ww*hh][k-vv*hh]+tt*hh)  //买h个
 
-                s=1;
+					dp[j][k] = dp[j-ww*hh][k-vv*hh]+tt*hh;
 
-                for (j = n,k = 0; j <= i, a[k] != '\0'; j++, k++)
+			}
 
-                {
+		}
 
-                    if(b[j] == a[k])
+	}
 
-                    {
+	printf("%d\n",dp[x][y]);
 
-                        s*=1;//用s来记录各个位能否对应，如果结果是1就正确，一位不对s就变成0
-
-                    }
-
-                    else
-
-                    {
-
-                        s*=0;
-
-                    }
-
-                }
-
-                if (s == 1)
-
-                {
-
-                    ss++; //如果每次都对就增加符合的次数
-
-                }
-
-                if (ss == 1 && s==1)
-
-                {
-
-                    rec = n; //记录第一次符合的位数
-
-                }
-
-                n=i;
-
-                n++;
-
-            }
-
-        }
-
-        if (ss == 0)
-
-        {
-
-            ss = -1;
-
-            printf("%d\n", ss);
-
-        }
-
-        else if (ss >= 1)
-
-        {
-
-            printf("%d %d\n", ss, rec);
-
-        }
-
-    }
-
-    return 0;
+	return 0;
 
 }
 

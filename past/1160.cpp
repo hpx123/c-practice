@@ -1,23 +1,27 @@
 #include<stdio.h>
+#include<stdlib.h>
+
+int cmp(const void *a, const void *b){
+	return *(int *)a - *(int *)b;
+}
 
 int main(){
-	int i, j, n, t;
-	int a[100][100];
+	int n, i, j;
+	int a[200000];
 	scanf("%d",&n);
-	for(i = 1; i <= n; i++){
-		for(j = 1; j <= n; j++){
-			scanf("%d",&a[i][j]);
+	for(i = 0; i < n; i++){
+		scanf("%d",&a[i]);
+	}
+	qsort(a, n, sizeof(a[0]), cmp);
+	int count = 1;
+	for(i = 0; i < n; i++){
+		if(a[i] == a[i + 1]){
+			count++;
+		}
+		else{
+			printf("%d %d\n",a[i], count);
+			count = 1;
 		}
 	}
-	int sum = 0;
-	t = n;
-	for(i = 1; i <= n; i++){
-		sum += a[i][i] + a[t][i];
-		--t;
-	}
-	if(n % 2){
-		sum -= a[n/2 + 1][n/2 + 1];
-	}
-	printf("%d",sum);
 	return 0;
-} 
+}
